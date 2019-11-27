@@ -12,12 +12,12 @@ let listBarang = [
   },
   {
     id: 2,
-    task: "printer",
+    nama: "printer",
     terjual: false
   },
   {
     id: 3,
-    task: "kulkas",
+    nama: "kulkas",
     terjual: true
   }
 ];
@@ -25,7 +25,7 @@ let listBarang = [
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // parse json
-// app.use(bodyParser.json())
+app.use(bodyParser.json());
 
 // get all data
 app.get("/", (req, res) => {
@@ -85,12 +85,13 @@ app.delete("/list-barang/:id", (req, res) => {
 
 app.put("/list-barang/:id", (req, res) => {
   try {
-    // let getListBarangToUpdate = listBarang.findIndex(data => data.id == req.params.id);
+    let getListBarangToUpdate = listBarang.findIndex(data => data.id == req.params.id);
+    console.log(req.body);
 
-    listBarang.map(data => {
+    listBarang.map((data, i) => {
       if (data.id == req.params.id) {
-        // listBarang[getListBarangToUpdate].name = req.body.name;
-        data.name = req.body.name;
+        listBarang[getListBarangToUpdate].nama = req.body.nama;
+        // listBarang[i].nama = req.body.nama;
       }
     });
     res.send({
