@@ -28,7 +28,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(bodyParser.json())
 
 // get all data
-app.get("/list-barang", (req, res) => {
+app.get("/", (req, res) => {
   res.send(listBarang);
 });
 
