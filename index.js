@@ -8,16 +8,19 @@ let listBarang = [
   {
     id: 1,
     nama: "komputer",
+    harga: 10000000,
     terjual: false
   },
   {
     id: 2,
     nama: "printer",
+    harga: 500000,
     terjual: false
   },
   {
     id: 3,
     nama: "kulkas",
+    harga: 3000000,
     terjual: true
   }
 ];
@@ -34,9 +37,10 @@ app.get("/", (req, res) => {
 
 // get data berdasarkan id
 app.get("/list-barang/:id", (req, res) => {
-  console.log(req.params.id);
+  const parameter_id = req.params.id;
+  console.log(parameter_id);
   //   try {
-  const filteredBarang = listBarang.find(item => item.id == req.params.id);
+  const filteredBarang = listBarang.find(item => item.id == parameter_id);
   // console.log(filteredBarang);
   res.send({
     message: "Here is what you looking for",
